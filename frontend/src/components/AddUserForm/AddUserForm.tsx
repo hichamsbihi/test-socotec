@@ -110,7 +110,9 @@ const AddUserForm: React.FC<AddUserFormProps> = ({ onSuccess }) => {
           )}
         </FormGroup>
 
-        <button type="submit" disabled={isSubmitting}></button>
+        <button type="submit" disabled={isSubmitting}>
+          {isSubmitting ? "Adding..." : "Add User"}
+        </button>
       </form>
     </FormContainer>
   );
