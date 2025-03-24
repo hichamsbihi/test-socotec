@@ -1,0 +1,43 @@
+
+
+services:
+  profile_app_back:
+    build:
+      context: ..
+      dockerfile: ./provisioning/user_app.back/Dockerfile
+    container_name: user-app-container
+    ports:
+      - "5000:5000"
+    restart: unless-stopped
+    environment:
+      - PORT=5000
+      - NODE_ENV=development
+      - MONGO_URI=mongodb://root:example@mongo:27017/users?authSource=admin
+      - CORS_ORIGIN=http://localhost:81
+    networks:
+      - central_bridge
+    depends_on:
+      - mongo
+    
+
+  mongo:
+    image: mongo:latest
+    container_name: mongo-db-container
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    networks: 
+      - central_bridge
+    restart: unless-stopped
+
+volumes:
+  mongo-data:
+        
+networks:
+  central_bridge:
+    driver: bridge
+
