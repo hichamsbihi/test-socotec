@@ -8,3 +8,7 @@ export interface User {
     phoneNumber: string;
 }
 
+
+export interface UserTableProps {
+  onEditSuccess?: () => void;
+}

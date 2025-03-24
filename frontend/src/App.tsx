@@ -47,7 +47,20 @@ const App: React.FC = () => {
           />
         )}
 
-        {activeTab === "list" && <UserTable />}
+        {activeTab === "list" && (
+          <UserTable
+            onEditSuccess={() => {
+              toast.success("user edited successfully", {
+                position: "top-center",
+                autoClose: 1500,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+              });
+            }}
+          />
+        )}
       </AppContainer>
     </ThemeProvider>
   );
