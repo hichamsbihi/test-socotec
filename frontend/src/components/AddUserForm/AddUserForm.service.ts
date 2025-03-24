@@ -1,11 +1,12 @@
 
 import { UserFormData } from "./AddUserForm.types";
+const API_URL = import.meta.env.VITE_API_URL;
 
 export const AddUserService = async (
   userData: UserFormData,
 ): Promise<boolean> => {
   try {
-    const response = await fetch("http://localhost:5000/api/users", {
+    const response = await fetch(`${API_URL}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -1,5 +1,5 @@
-import { User } from "../UserTable.types";
-
+import { User } from "./UserTable.types";
+const API_URL = import.meta.env.VITE_API_URL;
 
 export const fetchUsersService = async (
   setUsers: (users: User[]) => void,
@@ -7,10 +7,11 @@ export const fetchUsersService = async (
   setError: (error: string | null) => void
 ) => {
   setError(null);
+  
 
   try {
     // Faire une vraie requête API au lieu d'utiliser des données fictives
-    const response = await fetch("http://localhost:5000/api/users");
+    const response = await fetch(`${API_URL}`);
 
     // Vérifier si la réponse est correcte
     if (!response.ok) {

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { User, UserTableProps } from "./UserTable.types";
-import { fetchUsersService } from "./components/UserTable.service";
+import { fetchUsersService } from "./UserTable.service";
 import { StyledRow, Table, TableContainer } from "./UserTable.styles";
 import EditUser from "./components/EditUser";
 import DeleteUser from "./components/DeleteUser";

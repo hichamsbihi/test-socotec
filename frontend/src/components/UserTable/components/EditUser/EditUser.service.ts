@@ -1,4 +1,5 @@
 import { EditUserFormData } from "./EditUser.types";
+const API_URL = import.meta.env.VITE_API_URL;
 
 export const EditeUserService= async (
   userId: string,
@@ -6,7 +7,7 @@ export const EditeUserService= async (
 ): Promise<boolean> => {
   try {
     const response = await fetch(
-      `http://localhost:5000/api/users/${userId}`,
+      `${API_URL}/${userId}`,
       {
         method: "PUT",
         headers: {

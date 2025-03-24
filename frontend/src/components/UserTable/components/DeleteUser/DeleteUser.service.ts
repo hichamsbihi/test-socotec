@@ -1,7 +1,8 @@
+const API_URL = import.meta.env.VITE_API_URL;
 export const deleteUserService = async (userId: string): Promise<boolean> => {
   try {
     const response = await fetch(
-      `http://localhost:5000/api/users/${userId}`,
+      `${API_URL}/${userId}`,
       {
         method: "DELETE",
       }
