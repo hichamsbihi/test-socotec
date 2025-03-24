@@ -34,14 +34,11 @@ const App: React.FC = () => {
             onSuccess={() => {
               toast.success("user added successfully", {
                 position: "top-center",
-                autoClose: 3000,
+                autoClose: 1500,
                 hideProgressBar: false,
                 closeOnClick: true,
                 pauseOnHover: true,
                 draggable: true,
-                onClose: () => {
-                  setActiveTab("list");
-                },
               });
             }}
           />
@@ -51,6 +48,16 @@ const App: React.FC = () => {
           <UserTable
             onEditSuccess={() => {
               toast.success("user edited successfully", {
+                position: "top-center",
+                autoClose: 1500,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+              });
+            }}
+            onDeleteSuccess={() => {
+              toast.success("user deleted successfully", {
                 position: "top-center",
                 autoClose: 1500,
                 hideProgressBar: false,

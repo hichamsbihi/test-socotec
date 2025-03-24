@@ -11,4 +11,5 @@ export interface User {
 
 export interface UserTableProps {
   onEditSuccess?: () => void;
+  onDeleteSuccess?: () => void;
 }

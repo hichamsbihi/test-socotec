@@ -3,18 +3,27 @@ import { User, UserTableProps } from "./UserTable.types";
 import { fetchUsersService } from "./components/UserTable.service";
 import { StyledRow, Table, TableContainer } from "./UserTable.styles";
 import EditUser from "./components/EditUser";
+import DeleteUser from "./components/DeleteUser";
 
-const UserTable: React.FC<UserTableProps> = ({ onEditSuccess }) => {
+const UserTable: React.FC<UserTableProps> = ({
+  onEditSuccess,
+  onDeleteSuccess,
+}) => {
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [isEditModalOpen, setIsEditModalOpen] = useState<boolean>(false);
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
   const [refreshTrigger, setRefreshTrigger] = useState<number>(0);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState<boolean>(false);
 
   const handleEdit = (user: User) => {
     setSelectedUser(user);
     setIsEditModalOpen(true);
+  };
+  const handleDelete = (user: User) => {
+    setSelectedUser(user);
+    setIsDeleteModalOpen(true);
   };
   const refreshData = () => {
     setRefreshTrigger((prev) => prev + 1);
@@ -56,7 +65,7 @@ const UserTable: React.FC<UserTableProps> = ({ onEditSuccess }) => {
                 <td>{user.phoneNumber}</td>
                 <td>
                   <button onClick={() => handleEdit(user)}>Edit</button>
-                  <button>Delete</button>
+                  <button onClick={() => handleDelete(user)}>Delete</button>
                 </td>
               </StyledRow>
             ))}
@@ -64,18 +73,30 @@ const UserTable: React.FC<UserTableProps> = ({ onEditSuccess }) => {
         )}
       </Table>
       {selectedUser && (
-        <EditUser
-          isOpen={isEditModalOpen}
-          onClose={() => setIsEditModalOpen(false)}
-          user={selectedUser}
-          onSuccess={() => {
-            setIsEditModalOpen(false);
-            refreshData();
-            if (onEditSuccess) {
-              onEditSuccess();
-            }
-          }}
-        />
+        <>
+          <EditUser
+            isOpen={isEditModalOpen}
+            onClose={() => setIsEditModalOpen(false)}
+            user={selectedUser}
+            onSuccess={() => {
+              setIsEditModalOpen(false);
+              refreshData();
+              if (onEditSuccess) {
+                onEditSuccess();
+              }
+            }}
+          />
+          <DeleteUser
+            isOpen={isDeleteModalOpen}
+            onClose={() => setIsDeleteModalOpen(false)}
+            user={selectedUser}
+            onSuccess={() => {
+              setIsDeleteModalOpen(false);
+              refreshData();
+              if (onDeleteSuccess) onDeleteSuccess();
+            }}
+          />
+        </>
       )}
     </TableContainer>
   );
