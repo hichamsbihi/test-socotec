@@ -8,9 +8,11 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const App: React.FC = () => {
+  // active for tab add and list users
   const [activeTab, setActiveTab] = useState<"list" | "add">("list");
 
   return (
+    // wrapping the app with theme provider and with styled components
     <ThemeProvider theme={theme}>
       <ToastContainer />
       <AppContainer>

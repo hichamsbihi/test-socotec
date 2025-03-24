@@ -10,15 +10,15 @@ export const fetchUsersService = async (
   
 
   try {
-    // Faire une vraie requête API au lieu d'utiliser des données fictives
+    // fetch the api
     const response = await fetch(`${API_URL}`);
 
-    // Vérifier si la réponse est correcte
+   
     if (!response.ok) {
       throw new Error(`Erreur: ${response.status}`);
     }
 
-    // Récupérer et parser les données JSON
+    // parsing json data 
     const data = await response.json();
     console.log(data);
 

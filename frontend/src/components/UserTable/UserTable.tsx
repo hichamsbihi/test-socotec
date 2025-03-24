@@ -17,17 +17,21 @@ const UserTable: React.FC<UserTableProps> = ({
   const [refreshTrigger, setRefreshTrigger] = useState<number>(0);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState<boolean>(false);
 
+  // handle edit modal
   const handleEdit = (user: User) => {
     setSelectedUser(user);
     setIsEditModalOpen(true);
   };
+  // handle delete modal
   const handleDelete = (user: User) => {
     setSelectedUser(user);
     setIsDeleteModalOpen(true);
   };
+  // trigger var refresshtrigger to refress the list page
   const refreshData = () => {
     setRefreshTrigger((prev) => prev + 1);
   };
+  // call the list user service
   useEffect(() => {
     const fetchData = async () => {
       const newLoading = await fetchUsersService(setUsers, loading, setError);
