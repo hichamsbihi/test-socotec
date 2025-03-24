@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import connectDB from './config/db';
 import configureServer from './config/server';
+import userRoutes from './routes/userRoutes';
 
 //loading environnement vars
 dotenv.config();
@@ -11,6 +12,9 @@ connectDB();
 
 // init express 
 const app = express();
+
+// Routes
+app.use('/api/users', userRoutes);
 
 //passing middlewares
 configureServer(app);
