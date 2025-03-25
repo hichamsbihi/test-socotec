@@ -14,6 +14,23 @@ The UserList component is responsible for displaying a table of users with their
  **Edit Component**: Handles the editing functionality for user information through a modal form
  **Delete Component**: Manages the user deletion process with confirmation dialogs
 
+```bash
+# Navigate to the frontend directory
+cd frontend
+
+# Install dependencies
+npm install
+
+# Start the server in development mode
+npm run dev
+
+# Build for production
+npm run build
+
+# Start in production mode
+npm start
+```
+
 ###################################################################################################################################################################
 # User Profile Management API
 
@@ -92,4 +109,6 @@ The application can be run using Docker:
 # Build and run with Docker
 docker-compose -f ../provisioning/docker-compose.yml up -d
 ```
+
+don't forget to adapt your env variables 
 
